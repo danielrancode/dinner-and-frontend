@@ -33143,5 +33143,5 @@ export default `00601,18.180555, -66.749961
 99927,56.239062,-133.457924
 99929,56.370751,-131.693301`.split("\n").map(e => {
   let arr = e.split(",")
-  return {zip: arr[0], lat: arr[1], lng: arr[2]}
+  return {zip: arr[0], lat: arr[1], lon: arr[2]}
 })

@@ -9,12 +9,16 @@ class App extends Component {
 
     let restaurants
     let events
-    let location = prompt("Enter location")
+    let zipcode = prompt("Enter zipcode")
+    let lat = locationData.find(e => e.zip === zipcode).lat
+    let lon = locationData.find(e => e.zip === zipcode).lon
 
-    console.log(locationData.find(e => e.zip === location))
 
-    fetch(`http://localhost:4000/api/v1/restaurants?location=${location}`).then(r => r.json()).then(data => restaurants = data).then(() => console.log(location, restaurants))
-    fetch(`http://localhost:4000/api/v1/events?location=${location}`).then(r => r.json()).then(data => events = data).then(() => console.log(location, events))
+    console.log("lat = ", lat)
+    console.log("lon = ", lon)
+
+    fetch(`http://localhost:4000/api/v1/restaurants?location=${zipcode}`).then(r => r.json()).then(data => restaurants = data).then(() => console.log(zipcode, restaurants))
+    fetch(`http://localhost:4000/api/v1/events?lat=${lat}&lon=${lon}`).then(r => r.json()).then(data => events = data).then(() => console.log(lat, events))
 
     return (
       <div className="App">
