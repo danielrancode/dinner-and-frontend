@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import locationData from './locationData.js'
+
 
 class App extends Component {
-
-    // fetch('http://localhost:4000/api/v1/restaurants').then(r => r.json()).then
   render() {
-    let yosi
-    fetch('http://localhost:4000/api/v1/restaurants').then(r => r.json()).then(data => yosi = data).then(() => console.log(yosi))
+
+    let restaurants
+    let events
+    let location = prompt("Enter location")
+
+    console.log(locationData.find(e => e.zip === location))
+
+    fetch(`http://localhost:4000/api/v1/restaurants?location=${location}`).then(r => r.json()).then(data => restaurants = data).then(() => console.log(location, restaurants))
+    fetch(`http://localhost:4000/api/v1/events?location=${location}`).then(r => r.json()).then(data => events = data).then(() => console.log(location, events))
 
     return (
       <div className="App">
@@ -17,7 +24,6 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-          {yosi}
         </p>
       </div>
     );
