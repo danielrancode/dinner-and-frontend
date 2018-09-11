@@ -1,13 +1,22 @@
 import React from 'react'
-import Event from './Event'
+import Evnt from './Event'
 
 
 const EventsList = (props) => {
-  // console.log("eventsList props:", props)
+  console.log("eventsList props:", props)
   return (
     props.events.map(e => {
       return (
-        <Event props={e}/>
+        <Evnt
+          datetime={e.datetime_local}
+          title={e.short_title}
+          type={e.type}
+          address={e.venue.address}
+          extended_address={e.venue.extended_address}
+          coordinates={e.venue.location}
+          venue={e.venue.name}
+          url={e.url}
+        />
       )
     })
   )

@@ -1,21 +1,25 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 
-const Event = (props) => {
-  // console.log("event props: ", props)
+const Evnt = (props) => {
+  console.log(props)
 
   return (
     <Card>
     <Card.Content>
-     <Card.Header>{props.name}</Card.Header>
+     <Card.Header>{props.title}</Card.Header>
      <Card.Meta>
-       <span className='date'>Rock</span>
+       <span className='date'>{props.type}</span>
      </Card.Meta>
-     <Card.Description>Barclay's</Card.Description>
+     <Card.Description>
+     {props.datetime}<br/>
+     {props.venue}<br/>
+     {props.address}<br/>
+     {props.extended_address}<br/>
+     </Card.Description>
     </Card.Content>
     <Card.Content extra>
      <a>
-       173 Hebron st.
      </a>
     </Card.Content>
     </Card>
@@ -23,4 +27,4 @@ const Event = (props) => {
 
 }
 
-export default Event
+export default Evnt
