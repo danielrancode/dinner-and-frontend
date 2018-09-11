@@ -14,8 +14,8 @@ const Restaurant = (props) => {
        {props.phone}<br/>
        {props.address}<br/>
        {props.price}<br/>
-       {props.rating}<br/>
-       review count: {props.review_count}
+       Average rating: {props.rating}<br/>
+       Review count: {props.review_count}
      </Card.Description>
     </Card.Content>
     <Card.Content extra>

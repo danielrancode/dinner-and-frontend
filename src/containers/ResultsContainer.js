@@ -19,7 +19,7 @@ class ResultsContainer extends Component {
     return (/^\d+$/.test(str))
   }
 
-  lattituedOfZipCode(zipcode) {
+  lattitudeOfZipCode(zipcode) {
     return this.state.locDat.find(e => e.zip === zipcode).lat
   }
 
@@ -37,7 +37,7 @@ class ResultsContainer extends Component {
 
   componentDidMount() {
     let zip = this.state.zipcode
-    let lat = this.lattituedOfZipCode(zip)
+    let lat = this.lattitudeOfZipCode(zip)
     let lon = this.longitudeOfZipCode(zip)
     this.getData(zip, lat, lon)
   }
@@ -45,7 +45,7 @@ class ResultsContainer extends Component {
   setSearchTerm(term) {
     if (term.length === 5 && this.isNum(term) && this.state.zipcode !== term) {
       this.setState({zipcode: term})
-      this.getData(term, this.lattituedOfZipCode(term), this.longitudeOfZipCode(term))
+      this.getData(term, this.lattitudeOfZipCode(term), this.longitudeOfZipCode(term))
     }
   }
 
