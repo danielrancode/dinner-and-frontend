@@ -12,7 +12,8 @@ class ResultsContainer extends Component {
             restaurants: [],
             events: [],
             selectedRestaurant: {},
-            selectedEvent: {}
+            selectedEvent: {},
+            savedPrograms: {}
           }
 
   ////////// helper methods
@@ -57,7 +58,6 @@ class ResultsContainer extends Component {
         restaurant: this.state.selectedRestaurant,
         event: this.state.selectedEvent
     }
-    console.log("program:", program)
 
     fetch('http://localhost:4000/api/v1/programs', {
       method: 'POST',
@@ -66,10 +66,11 @@ class ResultsContainer extends Component {
       },
       body: JSON.stringify(program)
     })
-    .then(res => console.log('Created program:', res))
+    .then(res => console.log(res))
   }
 
   render() {
+    console.log(this.state.savedPrograms)
     return (
       <div>
         <Search handleChange={this.setSearchTerm.bind(this)}/>
