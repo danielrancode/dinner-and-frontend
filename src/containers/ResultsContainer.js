@@ -66,8 +66,7 @@ class ResultsContainer extends Component {
       },
       body: JSON.stringify(program)
     })
-    .then(res => res.json())
-    .then(data => console.log('Created program:', data))
+    .then(res => console.log('Created program:', res))
   }
 
   render() {
