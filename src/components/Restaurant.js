@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 
 const Restaurant = (props) => {
 
@@ -19,8 +20,7 @@ const Restaurant = (props) => {
      </Card.Description>
     </Card.Content>
     <Card.Content extra>
-     <a>
-     </a>
+      <Button primary onClick={() => props.save(props)}>Select</Button>
     </Card.Content>
     </Card>
   )

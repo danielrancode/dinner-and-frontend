@@ -15,7 +15,7 @@ export default class Navbar extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state
+    // const { activeItem } = this.state
 
     return (
       <Router>

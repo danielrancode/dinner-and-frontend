@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import Restaurant from './Restaurant'
 import Evnt from './Event'
 
@@ -9,8 +9,10 @@ const ResultsGrid = (props) => (
       <Grid.Column>
       {props.restaurants.map(r => {
         return (
-          <Grid.Row>
+          <Grid.Row key={r.id}>
             <Restaurant
+              save={props.saveRestaurant}
+              id={r.id}
               categories={r.categories.map(c => c.title).join(', ')}
               phone={r.display_phone}
               address={r.location.display_address.join('\n')}
@@ -29,17 +31,19 @@ const ResultsGrid = (props) => (
 
       {props.events.map(e => {
         return (
-          <Grid.Row>
-          <Evnt
-            datetime={e.datetime_local}
-            title={e.short_title}
-            type={e.type}
-            address={e.venue.address}
-            extended_address={e.venue.extended_address}
-            coordinates={e.venue.location}
-            venue={e.venue.name}
-            url={e.url}
-          />
+          <Grid.Row key={e.id}>
+            <Evnt
+              save={props.saveEvent}
+              id={e.id}
+              datetime={e.datetime_local}
+              title={e.short_title}
+              type={e.type}
+              address={e.venue.address}
+              extended_address={e.venue.extended_address}
+              coordinates={e.venue.location}
+              venue={e.venue.name}
+              url={e.url}
+            />
           </Grid.Row>
 
         )
