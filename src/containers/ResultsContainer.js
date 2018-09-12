@@ -52,16 +52,29 @@ class ResultsContainer extends Component {
     this.setState({selectedEvent: eventObj})
   }
 
-  saveProgram() {
-    console.log("restaurant", this.state.selectedRestaurant)
-    console.log("event", this.state.selectedEvent)
+  postData() {
+    let program = {
+        restaurant: this.state.selectedRestaurant,
+        event: this.state.selectedEvent
+    }
+    console.log("program:", program)
+
+    fetch('http://localhost:4000/api/v1/programs', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(program)
+    })
+    .then(res => res.json())
+    .then(data => console.log('Created program:', data))
   }
 
   render() {
     return (
       <div>
         <Search handleChange={this.setSearchTerm.bind(this)}/>
-        <Button onClick={this.saveProgram.bind(this)}>Save program</Button>
+        <Button onClick={this.postData.bind(this)}>Save program</Button>
         <ResultsGrid saveRestaurant={this.saveRestaurant.bind(this)} saveEvent={this.saveEvent.bind(this)} events={this.state.events} restaurants={this.state.restaurants}/>
       </div>
     )
