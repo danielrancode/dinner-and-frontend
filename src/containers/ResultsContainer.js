@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import locationData from '../locationData.js'
 import ResultsGrid from '../components/ResultsGrid.js'
-import RestaurantsList from '../components/RestaurantsList'
-import EventsList from '../components/EventsList'
 import Search from '../components/Search'
 
 
@@ -56,8 +54,6 @@ class ResultsContainer extends Component {
       <div>
         <Search handleChange={this.setSearchTerm.bind(this)}/>
         <ResultsGrid events={this.state.events} restaurants={this.state.restaurants}/>
-        <RestaurantsList restaurants={this.state.restaurants}/>
-        <EventsList events={this.state.events}/>
       </div>
     )
   }
